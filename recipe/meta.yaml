@@ -1,4 +1,4 @@
-{% set version = "0.1.3" %}
+{% set version = "0.2.0" %}
 
 package:
   name: pymatsolver
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/p/pymatsolver/pymatsolver-{{ version }}.tar.gz
-  sha256: a9dd23e4b44cdc5dc738b6f0375f2e5ced8a605a27f7fae891c1604de7a1b071
+  sha256: df9e0444f3c7fadf57b226d7d90b7be1dea9e24718575b458ba50429736d6c45
 
 build:
   number: 0
@@ -20,16 +20,15 @@ requirements:
   run:
     - python >=3.6
     - numpy
-    - pymkl >=0.0.3
-    - scipy >=0.13
-    - properties
-#    - mumps
+    - pydiso
+    - scipy
 
 test:
   imports:
     - pymatsolver
-    # This will be fixed in a new release.
-    # - pymatsolver.mumps
+  commands:
+    # Testing explicitly that pydiso was referenced correctly
+    - python -c "from pymatsolver import Pardiso"
 
 about:
   home: http://simpeg.xyz/
