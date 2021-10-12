@@ -15,13 +15,13 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
   run:
-    - python >=3.6
+    - python
     - numpy
-    - pydiso >=0.0.3
-    - scipy >=0.13
+    - pydiso
+    - scipy
 
 test:
   imports:
