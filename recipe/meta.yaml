@@ -10,7 +10,6 @@ source:
 
 build:
   number: 1
-  noarch: python
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
@@ -20,7 +19,7 @@ requirements:
   run:
     - python >=3.6
     - numpy
-    - pydiso #[not (osx and arm64)]
+    - pydiso  # [not (osx and arm64)]
     - scipy
 
 test:
