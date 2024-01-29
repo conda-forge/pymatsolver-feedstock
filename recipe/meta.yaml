@@ -9,18 +9,17 @@ source:
   sha256: df9e0444f3c7fadf57b226d7d90b7be1dea9e24718575b458ba50429736d6c45
 
 build:
-  number: 0
-  noarch: python
+  number: 1
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
   run:
-    - python >=3.6
+    - python
     - numpy
-    - pydiso
+    - pydiso  # [not (osx and arm64)]
     - scipy
 
 test:
