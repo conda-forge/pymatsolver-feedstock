@@ -20,7 +20,7 @@ requirements:
   run:
     - python >=3.6
     - numpy
-    - pydiso
+    - pydiso #[not (osx and arm64)]
     - scipy
 
 test:
