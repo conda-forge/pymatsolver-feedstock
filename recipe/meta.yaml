@@ -32,10 +32,7 @@ outputs:
     requirements:
       build:
         noarch: python
-      host:
-        - python >= 3.7
       run:
-        - python >= 3.7
         - {{ pin_subpackage('pymatsolver-base', max_pin="x.x.x") }}
         - pydiso
     test:
