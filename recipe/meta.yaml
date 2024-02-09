@@ -18,10 +18,10 @@ outputs:
       noarch: python
     requirements:
       host:
-        - python
+        - python >= 3.7
         - pip
       run:
-        - python
+        - python >= 3.7
         - numpy
         - scipy
     test:
@@ -33,9 +33,9 @@ outputs:
       build:
         noarch: python
       host:
-        - python
+        - python >= 3.7
       run:
-        - python
+        - python >= 3.7
         - {{ pin_subpackage('pymatsolver-base', max_pin="x.x.x") }}
         - pydiso
     test:
