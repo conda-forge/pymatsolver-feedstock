@@ -38,11 +38,11 @@ outputs:
         - python
         - {{ pin_subpackage('pymatsolver-base', max_pin="x.x.x") }}
         - pydiso
-      test:
-        imports:
-          - pymatsolver
-        commands:
-          - python -c "from pymatsolver import Pardiso"
+    test:
+      imports:
+        - pymatsolver
+      commands:
+        - python -c "from pymatsolver import Pardiso"
 
 about:
   home: http://simpeg.xyz/
