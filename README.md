@@ -145,6 +145,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-pymatsolver-green.svg)](https://anaconda.org/conda-forge/pymatsolver) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pymatsolver.svg)](https://anaconda.org/conda-forge/pymatsolver) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pymatsolver.svg)](https://anaconda.org/conda-forge/pymatsolver) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pymatsolver.svg)](https://anaconda.org/conda-forge/pymatsolver) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-pymatsolver--base-green.svg)](https://anaconda.org/conda-forge/pymatsolver-base) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pymatsolver-base.svg)](https://anaconda.org/conda-forge/pymatsolver-base) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pymatsolver-base.svg)](https://anaconda.org/conda-forge/pymatsolver-base) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pymatsolver-base.svg)](https://anaconda.org/conda-forge/pymatsolver-base) |
 
 Installing pymatsolver
 ======================
@@ -156,16 +157,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `pymatsolver` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `pymatsolver, pymatsolver-base` can be installed with `conda`:
 
 ```
-conda install pymatsolver
+conda install pymatsolver pymatsolver-base
 ```
 
 or with `mamba`:
 
 ```
-mamba install pymatsolver
+mamba install pymatsolver pymatsolver-base
 ```
 
 It is possible to list all of the versions of `pymatsolver` available on your platform with `conda`:
