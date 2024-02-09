@@ -29,9 +29,9 @@ outputs:
         - pymatsolver
 
   - name: pymatsolver
+    build:
+      noarch: python
     requirements:
-      build:
-        noarch: python
       run:
         - {{ pin_subpackage('pymatsolver-base', max_pin="x.x.x") }}
         - pydiso
