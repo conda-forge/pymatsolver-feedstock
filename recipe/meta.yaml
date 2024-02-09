@@ -9,25 +9,40 @@ source:
   sha256: df9e0444f3c7fadf57b226d7d90b7be1dea9e24718575b458ba50429736d6c45
 
 build:
-  number: 2
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  number: 3
 
-requirements:
-  host:
-    - python
-    - pip
-  run:
-    - python
-    - numpy
-    - pydiso  # [not (osx and arm64)]
-    - scipy
+outputs:
+  - name: pymatsolver-base
+    build:
+      script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+      noarch: python
+    requirements:
+      host:
+        - python
+        - pip
+      run:
+        - python
+        - numpy
+        - scipy
+    test:
+      imports:
+        - pymatsolver
 
-test:
-  imports:
-    - pymatsolver
-  commands:
-    # Testing explicitly that pydiso was referenced correctly
-    - python -c "from pymatsolver import Pardiso"
+  - name: pymatsolver
+    requirements:
+      build:
+        noarch: python
+      host:
+        - python
+      run:
+        - python
+        - {{ pin_subpackage('pymatsolver-base', max_pin="x.x.x") }}
+        - pydiso
+      test:
+        imports:
+          - pymatsolver
+        commands:
+          - python -c "from pymatsolver import Pardiso"
 
 about:
   home: http://simpeg.xyz/
