@@ -1,29 +1,32 @@
+{% set name = "pymatsolver" %}
 {% set version = "0.2.0" %}
 
 package:
-  name: pymatsolver
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/p/pymatsolver/pymatsolver-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: df9e0444f3c7fadf57b226d7d90b7be1dea9e24718575b458ba50429736d6c45
 
 build:
   number: 3
 
 outputs:
-  - name: pymatsolver-base
+  - name: {{ name }}-base
     build:
-      script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+      script: python -m pip install . --no-deps -vv
       noarch: python
+
     requirements:
       host:
-        - python >= 3.7
+        - python
         - pip
       run:
-        - python >= 3.7
+        - python
         - numpy
         - scipy
+
     test:
       imports:
         - pymatsolver
@@ -31,10 +34,12 @@ outputs:
   - name: pymatsolver
     build:
       noarch: python
+
     requirements:
       run:
-        - {{ pin_subpackage('pymatsolver-base', max_pin="x.x.x") }}
+        - {{ pin_subpackage(name+"-base", exact=True) }}
         - pydiso
+
     test:
       imports:
         - pymatsolver
