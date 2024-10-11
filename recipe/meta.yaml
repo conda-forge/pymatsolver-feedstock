@@ -1,5 +1,5 @@
 {% set name = "pymatsolver" %}
-{% set version = "0.2.0" %}
+{% set version = "0.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: df9e0444f3c7fadf57b226d7d90b7be1dea9e24718575b458ba50429736d6c45
+  sha256: e3dd7451ae03f7fb663d1657c159592c62e5dd8e44e2aa4f5815894550032ccb
 
 build:
   number: 3
@@ -20,18 +20,22 @@ outputs:
 
     requirements:
       host:
-        - python
+        - python >= 3.10
         - pip
+        - setuptools >=64
+        - setuptools_scm >=8
       run:
         - python
-        - numpy
-        - scipy
+        - numpy >=1.21
+        - scipy >=1.8
+      run_constrained:
+        - pydiso >=0.1.0
 
     test:
       imports:
         - pymatsolver
 
-  - name: pymatsolver
+  - name: {{ name }}
     build:
       noarch: python
 
