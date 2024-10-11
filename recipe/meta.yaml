@@ -32,12 +32,12 @@ requirements:
 test:
   imports:
     - pymatsolver
-    - pymatsolver.Solver
-    - pymatsolver.Pardiso
-    - pymatsolver.Mumps
-    - pymatsolver.SolverLU
-    - pymatsolver.Triangle
-    - pymatsolver.Diagonal
+    - pymatsolver.solvers
+    - pymatsolver.iterative
+    - pymatsolver.wrappers
+    - pymatsolver.direct
+    - pymatsolver.direct.pardiso
+    - pymatsolver.direct.mumps
 
 about:
   home: http://simpeg.xyz/
