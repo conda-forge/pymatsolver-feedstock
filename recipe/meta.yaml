@@ -10,7 +10,8 @@ source:
   sha256: e3dd7451ae03f7fb663d1657c159592c62e5dd8e44e2aa4f5815894550032ccb
 
 build:
-  number: 3
+  number: 0
+  skip: true  # [py<310]
 
 outputs:
   - name: {{ name }}-base
