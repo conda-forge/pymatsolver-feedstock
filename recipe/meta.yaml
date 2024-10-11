@@ -11,50 +11,33 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<310]
+  noarch: python
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
-    - python
+    - python >=3.10
+    - pip
+    - setuptools >=64
+    - setuptools_scm >=8
+  run:
+    - python >=3.10
+    - numpy >=1.21
+    - scipy >=1.8
+    - packaging
+  run_constrained:
+    - pydiso >=0.1
+    - python-mumps >=0.0.2
 
-outputs:
-  - name: {{ name }}-base
-    build:
-      script: python -m pip install . --no-deps -vv
-      noarch: python
-
-    requirements:
-      host:
-        - python
-        - pip
-        - setuptools >=64
-        - setuptools_scm >=8
-      run:
-        - python
-        - numpy >=1.21
-        - scipy >=1.8
-        - packaging
-      run_constrained:
-        - pydiso >=0.1.0
-
-    test:
-      imports:
-        - pymatsolver
-
-  - name: {{ name }}
-    build:
-      noarch: python
-
-    requirements:
-      run:
-        - {{ pin_subpackage(name+"-base", exact=True) }}
-        - pydiso
-
-    test:
-      imports:
-        - pymatsolver
-      commands:
-        - python -c "from pymatsolver import Pardiso"
+test:
+  imports:
+    - pymatsolver
+    - pymatsolver.Solver
+    - pymatsolver.Pardiso
+    - pymatsolver.Mumps
+    - pymatsolver.SolverLU
+    - pymatsolver.Triangle
+    - pymatsolver.Diagonal
 
 about:
   home: http://simpeg.xyz/
