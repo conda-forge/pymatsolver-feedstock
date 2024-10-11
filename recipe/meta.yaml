@@ -13,6 +13,10 @@ build:
   number: 0
   skip: true  # [py<310]
 
+requirements:
+  host:
+    - python
+
 outputs:
   - name: {{ name }}-base
     build:
@@ -26,7 +30,7 @@ outputs:
         - setuptools >=64
         - setuptools_scm >=8
       run:
-        - python >=3.10
+        - python
         - numpy >=1.21
         - scipy >=1.8
         - packaging
