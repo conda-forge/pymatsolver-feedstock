@@ -1,5 +1,5 @@
 {% set name = "pymatsolver" %}
-{% set version = "0.3.0" %}
+{% set version = "0.3.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: e3dd7451ae03f7fb663d1657c159592c62e5dd8e44e2aa4f5815894550032ccb
+  sha256: 24b02d1022eaca2ec0199fa25052f5c0fa8ebee73ab26523c441385b4ece0651
 
 build:
   number: 0
