@@ -10,7 +10,7 @@
 {% set build_num = build_num + 200 %}
 {% elif default_direct|string == "mumps" %}
 {% set build_num = build_num + 100 %}
-{% endif % }
+{% endif %}
 
 package:
   name: {{ name|lower }}
