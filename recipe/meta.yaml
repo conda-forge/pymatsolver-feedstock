@@ -1,17 +1,16 @@
 {% set name = "pymatsolver" %}
 {% set version = "0.3.1" %}
-{ % set build_num = 1 % }
+{% set build_num = 1 %}
 
-{ % if default_direct is not defined % }
-{ % set default_direct = "none" % }
-{ % endif % }
-{ % endif % }
+{% if default_direct is not defined %}
+{% set default_direct = "none" %}
+{% endif %}
 
-{ % if default_direct|string == "pardiso" % }
-{ % set build_num = build_num + 200 % }
-{ % elif default_direct|string == "mumps" % }
-{ % set build_num = build_num + 100 % }
-{ % endif % }
+{% if default_direct|string == "pardiso" %}
+{% set build_num = build_num + 200 %}
+{% elif default_direct|string == "mumps" %}
+{% set build_num = build_num + 100 %}
+{% endif % }
 
 package:
   name: {{ name|lower }}
