@@ -36,11 +36,18 @@ requirements:
     - numpy >=1.21
     - scipy >=1.8
     - packaging
-    - pydiso >=0.1             # [default_direct == "pardiso"]
-    - python-mumps >=0.0.2     # [default_direct == "mumps"]
+{% if default_direct|string == "pardiso" %}
+    - pydiso >=0.1
+{% elif default_direct|string == "mumps" %}
+    - python-mumps >=0.0.2
+{% endif %}
   run_constrained:
-    - pydiso >=0.1             # [default_direct != "pardiso"]
-    - python-mumps >=0.0.2     # [default_direct != "mumps"]
+{% if default_direct|string != "pardiso" %}
+    - pydiso >=0.1
+{% endif %}
+{% if default_direct|string != "mumps" %}
+    - python-mumps >=0.0.2
+{% endif %}
 
 test:
   imports:
