@@ -1,0 +1,4 @@
+default_direct:
+  - pardiso
+  - mumps
+  - none

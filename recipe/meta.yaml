@@ -1,5 +1,16 @@
 {% set name = "pymatsolver" %}
 {% set version = "0.3.1" %}
+{% set build_num = 1 %}
+
+{% if default_direct is not defined %}
+{% set default_direct = "none" %}
+{% endif %}
+
+{% if default_direct|string == "pardiso" %}
+{% set build_num = build_num + 200 %}
+{% elif default_direct|string == "mumps" %}
+{% set build_num = build_num + 100 %}
+{% endif %}
 
 package:
   name: {{ name|lower }}
@@ -10,7 +21,7 @@ source:
   sha256: 24b02d1022eaca2ec0199fa25052f5c0fa8ebee73ab26523c441385b4ece0651
 
 build:
-  number: 0
+  number: {{ build_num }}
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
@@ -25,9 +36,18 @@ requirements:
     - numpy >=1.21
     - scipy >=1.8
     - packaging
-  run_constrained:
+{% if default_direct|string == "pardiso" %}
     - pydiso >=0.1
+{% elif default_direct|string == "mumps" %}
     - python-mumps >=0.0.2
+{% endif %}
+  run_constrained:
+{% if default_direct|string != "pardiso" %}
+    - pydiso >=0.1
+{% endif %}
+{% if default_direct|string != "mumps" %}
+    - python-mumps >=0.0.2
+{% endif %}
 
 test:
   imports:
