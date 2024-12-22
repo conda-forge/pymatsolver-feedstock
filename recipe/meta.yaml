@@ -1,3 +1,4 @@
+{% set python_min = '3.10' %}
 {% set name = "pymatsolver" %}
 {% set version = "0.3.1" %}
 {% set build_num = 1 %}
@@ -17,7 +18,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 24b02d1022eaca2ec0199fa25052f5c0fa8ebee73ab26523c441385b4ece0651
 
 build:
@@ -27,12 +28,12 @@ build:
 
 requirements:
   host:
-    - python >=3.10
+    - python {{ python_min }}
     - pip
     - setuptools >=64
     - setuptools_scm >=8
   run:
-    - python >=3.10
+    - python >={{ python_min }}
     - numpy >=1.21
     - scipy >=1.8
     - packaging
@@ -50,6 +51,8 @@ requirements:
 {% endif %}
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - pymatsolver
     - pymatsolver.solvers
