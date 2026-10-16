@@ -1,6 +1,6 @@
-{% set python_min = '3.11' %}
+{% set python_min = "3.11" %}
 {% set name = "pymatsolver" %}
-{% set version = "0.4.0" %}
+{% set version = "0.5.0" %}
 {% set build_num = 1 %}
 
 {% if default_direct is not defined %}
@@ -18,8 +18,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 0ef77e92ac5a780df08d921cc772e0fe230d88e114355eaa2958a2ffa5b35004
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 4977943e324d850401d703e64100e494bc7a950a344029a32900a84491a2669f
 
 build:
   number: {{ build_num }}
