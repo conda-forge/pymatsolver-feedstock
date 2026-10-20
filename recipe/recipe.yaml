@@ -1,0 +1,64 @@
+context:
+  version: "0.5.0"
+  build_num: 0
+  # each default_direct variant gets its own build number range so the solver
+  # preference can be picked with a build number (pardiso > mumps > none)
+  direct_offset: ${{ 200 if default_direct == "pardiso" else (100 if default_direct == "mumps" else 0) }}
+  # the solver interface installed with this variant (none for the "none" variant)
+  direct_dep: ${{ "pydiso >=0.1" if default_direct == "pardiso" else ("python-mumps >=0.0.2" if default_direct == "mumps" else "") }}
+
+package:
+  name: pymatsolver
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/p/pymatsolver/pymatsolver-${{ version }}.tar.gz
+  sha256: 4977943e324d850401d703e64100e494bc7a950a344029a32900a84491a2669f
+
+build:
+  number: ${{ build_num + direct_offset }}
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . --no-deps -vv
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools >=64
+    - setuptools_scm >=8
+  run:
+    - python >=${{ python_min }}
+    - numpy >=1.26
+    - scipy >=1.11.2
+    - packaging
+    - ${{ direct_dep }}
+  run_constraints:
+    - pydiso >=0.1
+    - python-mumps >=0.0.2
+
+tests:
+  - python:
+      imports:
+        - pymatsolver
+        - pymatsolver.solvers
+        - pymatsolver.iterative
+        - pymatsolver.wrappers
+        - pymatsolver.direct
+        - pymatsolver.direct.pardiso
+        - pymatsolver.direct.mumps
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+
+about:
+  homepage: https://simpeg.xyz
+  license: MIT
+  license_file: LICENSE
+  summary: "pymatsolver: Matrix Solvers for Python"
+  repository: https://github.com/simpeg/pymatsolver
+  documentation: https://simpeg.xyz/pymatsolver/
+
+extra:
+  recipe-maintainers:
+    - lheagy
+    - jcapriot

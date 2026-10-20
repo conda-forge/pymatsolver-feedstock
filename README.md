@@ -3,11 +3,15 @@ About pymatsolver-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pymatsolver-feedstock/blob/main/LICENSE.txt)
 
-Home: http://simpeg.xyz/
+Home: https://simpeg.xyz/
 
 Package license: MIT
 
 Summary: pymatsolver: Matrix Solvers for Python
+
+Development: https://github.com/simpeg/pymatsolver
+
+Documentation: https://simpeg.xyz/pymatsolver/
 
 Current build status
 ====================
