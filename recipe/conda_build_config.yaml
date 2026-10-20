@@ -2,3 +2,5 @@ default_direct:
   - pardiso
   - mumps
   - none
+python_min:
+  - "3.12"
