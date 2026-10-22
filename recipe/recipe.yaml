@@ -1,5 +1,5 @@
 context:
-  version: "0.5.0"
+  version: "0.5.1"
   build_num: 0
   # each default_direct variant gets its own build number range so the solver
   # preference can be picked with a build number (pardiso > mumps > none)
@@ -13,7 +13,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/p/pymatsolver/pymatsolver-${{ version }}.tar.gz
-  sha256: 4977943e324d850401d703e64100e494bc7a950a344029a32900a84491a2669f
+  sha256: 0103dc5f24567217588d9442f660285d6e1eb27b4b3715e847e513f5bd3a0294
 
 build:
   number: ${{ build_num + direct_offset }}
